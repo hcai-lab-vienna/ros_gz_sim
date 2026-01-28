@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(ros_gz_sim)
+project(ros_gz_lehrforst_sim)
 
 find_package(ament_cmake REQUIRED)
 

@@ -6,9 +6,6 @@
 #### AgileX Scout
 ![Gazebo Scout Simulation Image](img/gazebo_scout.png)
 
-#### Lehforst Model
-is used
-
 
 ## Requirements
 
