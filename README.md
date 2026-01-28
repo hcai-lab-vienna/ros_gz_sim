@@ -1,8 +1,13 @@
-# ROS2 Gazebo Simulation for AgileX Bunker in the Lehrforst
+# ROS2 Gazebo Simulation for our Robots
 
-TODO: add scout
+#### AgileX Bunker
+![Gazebo Bunker Simulation Image](img/gazebo_bunker.png)
 
-![Gazebo Simulation Image](img/gazebo_bunker.png)
+#### AgileX Scout
+![Gazebo Scout Simulation Image](img/gazebo_scout.png)
+
+#### Lehforst Model
+is used
 
 
 ## Requirements
@@ -15,13 +20,13 @@ TODO: add scout
 
 Create directory
 ```bash
-mkdir -p bunker_simulation/src
-cd bunker_simulation/src
+mkdir -p ros_gz_sim/src
+cd ros_gz_sim/src
 ```
 
 Clone repo
 ```bash
-git clone https://github.com/hcai-lab-vienna/ros_gz_bunker_lehrforst_sim.git
+git clone https://github.com/hcai-lab-vienna/ros_gz_sim.git
 ```
 
 Build
@@ -35,7 +40,8 @@ colcon build --symlink-install
 Start with
 ```bash
 source install/setup.bash
-ros2 launch ros_gz_bunker_lehrforst_sim bunker_in_lehrforst_sim.launch.xml
+ros2 launch ros_gz_sim bunker_lehrforst.launch.xml # Bunker
+ros2 launch ros_gz_sim scout_lehrforst.launch.xml # Bunker
 ```
 
 After starting simulation control with arrow keys (press 's' for break) inside Gazebo or via ros with
@@ -45,8 +51,5 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 Alternatively you can publish to `/cmd_vel` for control commands.
 
-Other ROS2 topics:
-- `/bunker/odometry` simulated odometry data
-- `/bunker/pose` position data in the simulation grid (to approx GNSS)
-- `/bunker/tf` transform data over time
-- `/bunker/imu` simulated imu
+Other ROS2 topics besides `\odom`, `\pose`, `\tf`, `\imu`:
+- For scout exists `/scout/force_bar/segment_X` where `X` is `0` to `4`, the wrench data from force bar segments.
