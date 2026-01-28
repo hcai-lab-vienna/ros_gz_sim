@@ -175,7 +175,7 @@ SDF += """
 
 </sdf>"""
 
-with open(f"{model_path}/lehrforst_trees.sdf", "w") as f:
+with open(f"{model_path}/model.sdf", "w") as f:
     f.write(SDF)
 
 with open(f"{model_path}/tree_position_filtered.csv", "w") as f:
