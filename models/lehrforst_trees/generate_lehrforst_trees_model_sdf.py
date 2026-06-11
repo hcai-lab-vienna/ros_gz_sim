@@ -18,9 +18,6 @@ random.seed("lehrforst")
 # wether to use nice tree models or not
 fancy = False
 
-# wether or not to draw the cone leaves in non-fancy mode
-cone_leaves = False
-
 # area in which trees will be loaded
 x_min = 10
 x_max = 70
@@ -62,15 +59,6 @@ for i, line in enumerate(lines[1:]):
     random_rotation_y = random.uniform(0, 0.075)
 
     if fancy:
-        # <collision name="tree_{i+1:0>4}_collision">
-        #   <pose relative_to='world'>{x:.3f} {y:.3f} {z:.3f} {tree_rotation:.3f} {random_rotation_y:.3f} {random_rotation_z:.3f}</pose>
-        #   <geometry>
-        #     <mesh>
-        #       <scale>{scale:.3f} {scale:.3f} {scale:.3f}</scale>
-        #       <uri>meshes/pine_tree.dae</uri>
-        #     </mesh>
-        #   </geometry>
-        # </collision>
         SDF += f"""
   <link name='tree_{i + 1:0>4}'>
     <collision name='tree_{i + 1:0>4}_collision'>
@@ -161,9 +149,7 @@ for i, line in enumerate(lines[1:]):
         <diffuse>0.42 0.29 0.19 1</diffuse>
         <specular>0.42 0.29 0.19 1</specular>
       </material>
-    </visual>"""
-    if cone_leaves:
-      SDF += """
+    </visual>
     <visual name='tree_{i + 1:0>4}_leaves'>
       <pose>{x:.3f} {y:.3f} {z - 1.5 * tree_hight_factor * radius + 0.1:.3f} {tree_rotation:.3f} 0 0</pose>
       <geometry>
@@ -177,8 +163,7 @@ for i, line in enumerate(lines[1:]):
         <diffuse>0.14 0.40 0.07 1</diffuse>
         <specular>0.14 0.40 0.07 1</specular>
       </material>
-    </visual>"""
-    SDF += """
+    </visual>
   </link>
 """
 
